@@ -8,7 +8,7 @@ services:
     networks:
       - wings0
     ports:
-      - "$MYSQL_IP:$MYSQL_PORT:3306"
+      - "$MYSQL_IP:$MYSQL_PORT:$MYSQL_IP:$MYSQL_PORT"
     volumes:
       - "/var/lib/mysql-dbhost/db:/var/lib/mysql"
       - "/usr/share/zoneinfo/America/New_York:/etc/localtime:ro"
@@ -17,7 +17,7 @@ services:
       MYSQL_PASSWORD: $MYSQL_PASSWORD
       MYSQL_DATABASE: "dbhost"
       MYSQL_USER: "dbhost"
-      MYSQL_TCP_PORT: "3306"
+      MYSQL_TCP_PORT: "$MYSQL_PORT"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
